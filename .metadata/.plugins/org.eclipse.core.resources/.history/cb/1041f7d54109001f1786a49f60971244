@@ -1,0 +1,5 @@
+package com.training.cab.response;
+
+public class CabGetAllResponse {
+
+}

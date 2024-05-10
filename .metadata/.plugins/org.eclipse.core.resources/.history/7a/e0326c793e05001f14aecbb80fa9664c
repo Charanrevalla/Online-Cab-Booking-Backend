@@ -1,0 +1,94 @@
+package com.training.bean;
+
+import java.util.Objects;
+
+import jakarta.persistence.MappedSuperclass;
+
+
+
+@MappedSuperclass
+
+public abstract class User {
+    
+	private String userName;
+	private String password;
+	private String address;
+	private String mobileNumber;
+	private String email;
+	private String userRole;
+	
+	
+	//getters and stters 
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(address, email, mobileNumber, password, userName, userRole);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(address, other.address) && Objects.equals(email, other.email)
+				&& Objects.equals(mobileNumber, other.mobileNumber) && Objects.equals(password, other.password)
+				&& Objects.equals(userName, other.userName) && Objects.equals(userRole, other.userRole);
+	}
+	public User(String userName, String password, String address, String mobileNumber, String email, String userRole) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.address = address;
+		this.mobileNumber = mobileNumber;
+		this.email = email;
+		this.userRole = userRole;
+	}
+	public User() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "User []";
+	}
+	
+	
+	
+}

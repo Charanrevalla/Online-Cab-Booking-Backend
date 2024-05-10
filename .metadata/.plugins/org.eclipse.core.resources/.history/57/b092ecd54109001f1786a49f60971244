@@ -1,0 +1,5 @@
+package com.training.tripbooking.response;
+
+public class TripBookingAddResponse {
+
+}

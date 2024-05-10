@@ -1,0 +1,125 @@
+package com.training.service;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.training.bean.TripBooking;
+import com.training.dao.TripBookingDAO;
+
+@Service
+public class TripBookingServiceImpl implements TripBookingService{
+
+	@Autowired
+	TripBookingDAO tripBookingDAO;
+	
+	@Override
+	public TripBooking insertTripBooking(TripBooking tripBooking) {
+		
+		TripBooking t1= this.tripBookingDAO.save(tripBooking);
+		return t1;
+	}
+
+	@Override
+	public TripBooking updateTripBooking(int tripBookingId, TripBooking tripBooking) {
+	    Optional<TripBooking> optionalTripBooking = tripBookingDAO.findById(tripBookingId);
+	    
+	    if (optionalTripBooking.isPresent()) {
+	        tripBooking.setTripBookingId(tripBookingId);
+	        return tripBookingDAO.save(tripBooking);
+	    } else {
+	        return null; // Or you can throw an exception if needed
+	    }
+	}
+
+	
+
+	@Override
+	public String deleteTripBooking(int tripBookingId) {
+	    Optional<TripBooking> optionalTripBooking = tripBookingDAO.findById(tripBookingId);
+	    
+	    if (optionalTripBooking.isPresent()) {
+	        tripBookingDAO.deleteById(tripBookingId);
+	        return "TripBooking Deleted";
+	    } else {
+	        return "TripBooking with ID " + tripBookingId + " does not exist";
+	    }
+	}
+
+
+
+
+	@Override
+	public List<TripBooking> getAllTripsForCustomer(int customerId) {
+	    List<TripBooking> customerTrips = new ArrayList<>();
+	    List<TripBooking> allTripBookings = tripBookingDAO.findAll();
+	    for (TripBooking tripBooking : allTripBookings) {
+	        if (tripBooking.getCustomer() != null && tripBooking.getCustomer().getCustomerId() == customerId) {
+	            customerTrips.add(tripBooking);
+	        }
+	    }
+	    return customerTrips;
+	}
+
+
+	@Override
+    public TripBooking calculateBill(int customerId) {
+        // Fetch all trip bookings
+        List<TripBooking> allTrips = tripBookingDAO.findAll();
+        
+        // Calculate the total bill for the specified customer
+        float totalBill = 0;
+        for (TripBooking trip : allTrips) {
+            if (trip.getCustomer().getCustomerId() == customerId) {
+                totalBill += trip.getBill();
+            }
+        }
+
+        // Create a new TripBooking object to represent the total bill
+        TripBooking totalBillTrip = new TripBooking();
+        totalBillTrip.setBill(totalBill);
+
+        return totalBillTrip;
+    }
+
+	
+
+	@Override
+	public List<TripBooking> getAllTrips(int customerId) {
+		
+		List<TripBooking> allBookings=this.tripBookingDAO.findAll();
+		List<TripBooking> bookingsbyCustomers=new ArrayList<>();
+		for(TripBooking t : allBookings) {
+			if(t.getCustomer().getCustomerId()==customerId) {
+				bookingsbyCustomers.add(t);
+			}
+		
+		}
+		return bookingsbyCustomers;
+	}
+
+	
+	@Override
+	public List<TripBooking> getAllTripsForDays(int customerId, LocalDateTime fromDate, LocalDateTime toDate) {
+	    List<TripBooking> allBookings = this.tripBookingDAO.findAll();
+	    List<TripBooking> bookingsWithinDateRange = new ArrayList<>();
+	    
+	    for (TripBooking trip : allBookings) {
+	        if (trip.getCustomer().getCustomerId() == customerId &&
+	            trip.getFromDateTime().isAfter(fromDate) &&
+	            trip.getToDateTime().isBefore(toDate)) {
+	            bookingsWithinDateRange.add(trip);
+	        }
+	    }
+	    
+	    return bookingsWithinDateRange;
+	}
+
+
+
+
+}

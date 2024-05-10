@@ -1,0 +1,98 @@
+/*package com.training.bean;
+
+import java.util.List;
+import java.util.Objects;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Customers")
+public class Customer extends User{
+
+	
+	@Id
+	@GeneratedValue(
+	strategy=GenerationType.SEQUENCE,
+	generator="cust_seq"
+	)
+	@SequenceGenerator(
+	name="cust_seq",
+	sequenceName="customer_seq",
+	allocationSize=1
+	)
+	
+	private Integer customerId;
+	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private List<TripBooking> tripBooking;
+
+	public Customer(String userName, String password, String address, String mobileNumber, String email,
+			String userRole, Integer customerId, List<TripBooking> tripBooking) {
+		super(userName, password, address, mobileNumber, email, userRole);
+		this.customerId = customerId;
+		this.tripBooking = tripBooking;
+	}
+
+	public Customer(String userName, String password, String address, String mobileNumber, String email,
+			String userRole, Integer customerId) {
+		super(userName, password, address, mobileNumber, email, userRole);
+		this.customerId = customerId;
+	}
+
+	public Customer(String userName, String password, String address, String mobileNumber, String email,
+			String userRole) {
+		super(userName, password, address, mobileNumber, email, userRole);
+	}
+
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+	public List<TripBooking> getTripBooking() {
+		return tripBooking;
+	}
+
+	public void setTripBooking(List<TripBooking> tripBooking) {
+		this.tripBooking = tripBooking;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", tripBooking=" + tripBooking + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(customerId);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		return Objects.equals(customerId, other.customerId);
+	}
+	
+	
+	
+	
+}*/

@@ -1,0 +1,15 @@
+package com.training.service;
+
+
+import java.util.List;
+
+import com.training.bean.Customer;
+
+	public interface CustomerService {
+	    Customer insertCustomer(Customer customer);
+	    Customer updateCustomer(Customer customer);
+	    String deleteCustomer(Customer customer);
+	    List<Customer> getAllCustomers();
+	    Customer getCustomerByIdCustomer(int customerId);
+	   
+	}

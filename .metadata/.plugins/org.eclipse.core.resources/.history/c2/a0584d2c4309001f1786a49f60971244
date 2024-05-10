@@ -1,0 +1,67 @@
+package com.training.ui;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.training.admin.response.AdminInsertResponse;
+import com.training.bean.Admin;
+
+
+
+@RestController
+@RequestMapping("/invoker")
+public class AdminInvokeController {
+
+	
+
+	@Autowired
+	RestTemplate restTemplate;
+
+	@PostMapping("/add")
+	public ResponseEntity<AdminInsertResponse> f1(@RequestBody Admin admin){
+
+	String url="http://02-ADMINMODULE/admin/add";
+	Admin a1=this.restTemplate.postForObject(url, admin, Admin.class);
+	AdminInsertResponse response= new AdminInsertResponse();
+	response.setStatusCode(200);
+	response.setAdmin(a1);
+	response.setDescription("Admin added Successfully");
+	return ResponseEntity.ok(response);
+
+	}
+	
+	@PutMapping("/updateAdmin")
+	public ResponseEntity<AdminInsertResponse> f2(@RequestBody Admin admin){
+
+	String url="http://02-ADMINMODULE/admin/add";
+	Admin a2=this.restTemplate.postForObject(url, admin, Admin.class);
+	AdminInsertResponse response= new AdminInsertResponse();
+	response.setStatusCode(200);
+	response.setAdmin(a2);
+	response.setDescription("Admin update Successfully");
+	return ResponseEntity.ok(response);
+
+	}
+	
+	@DeleteMapping("/deleteAdmin")
+	public ResponseEntity<AdminInsertResponse> f3(@RequestBody Admin admin){
+
+	String url="http://02-ADMINMODULE/admin/add";
+	Admin a3=this.restTemplate.postForObject(url, admin, Admin.class);
+	AdminInsertResponse response= new AdminInsertResponse();
+	response.setStatusCode(200);
+	response.setAdmin(a3);
+	response.setDescription("Admin added Successfully");
+	return ResponseEntity.ok(response);
+
+	}
+	
+	
+}

@@ -1,0 +1,49 @@
+package com.training.bean;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
+
+@Entity
+public class Cab {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer cabId;
+	private String carType;
+	private String carName;
+	private String carNumber;
+	private float perKmRate;
+	private String CurrLocation;
+	private String cabCurrStatus;
+	
+	@OneToOne
+	@JsonIgnore
+	private Driver driver;
+
+	public Cab(Integer cabId, String carType, String carName, String carNumber, float perKmRate, String currLocation,
+			String cabCurrStatus, Driver driver) {
+		super();
+		this.cabId = cabId;
+		this.carType = carType;
+		this.carName = carName;
+		this.carNumber = carNumber;
+		this.perKmRate = perKmRate;
+		CurrLocation = currLocation;
+		this.cabCurrStatus = cabCurrStatus;
+		this.driver = driver;
+	}
+
+	public Cab() {
+		super();
+	}
+	
+	
+}
+
+

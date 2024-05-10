@@ -1,0 +1,5 @@
+package com.training.admin.response;
+
+public class AdminUpdateResponse {
+
+}

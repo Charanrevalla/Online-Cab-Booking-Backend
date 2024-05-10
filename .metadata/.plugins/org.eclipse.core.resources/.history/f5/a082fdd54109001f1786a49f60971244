@@ -1,0 +1,31 @@
+package com.training.admin.response;
+
+import com.training.bean.Admin;
+
+public class AdminInsertResponse {
+	
+	int statusCode;
+	Admin admin;
+	String description;
+	public int getStatusCode() {
+		return statusCode;
+	}
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+	public Admin getAdmin() {
+		return admin;
+	}
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
+
+}

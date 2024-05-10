@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="com.training.dao.CabDAO"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.training.dao.CustomerDAO"/>
+    <fullyQualifiedTypeName name="com.training.dao.DriverDAO"/>
+    <fullyQualifiedTypeName name="com.training.dao.TripBookingDAO"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.training.bean.Customer"/>
+    <fullyQualifiedTypeName name="com.training.bean.Admin"/>
+    <fullyQualifiedTypeName name="java.io.PrintStream"/>
+    <fullyQualifiedTypeName name="com.training.bean.Driver"/>
+    <fullyQualifiedTypeName name="com.training.bean.TripBooking"/>
+    <fullyQualifiedTypeName name="com.training.bean.Cab"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+</qualifiedTypeNameHistroy>
